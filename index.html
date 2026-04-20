@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lift Tracker — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #2B8EFF;
+    --blue-dim: rgba(43,142,255,0.10);
+    --blue-border: rgba(43,142,255,0.22);
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --subtle: #9ca3af;
+    --bg: #f7f7f9;
+    --card: rgba(255,255,255,0.80);
+    --border: rgba(0,0,0,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  #cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--blue);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, opacity 0.2s;
+    mix-blend-mode: multiply;
+    will-change: transform;
+  }
+  #cursor.hover { width: 32px; height: 32px; opacity: 0.3; }
+
+  /* Ambient orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.14;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .orb-1 { width: 600px; height: 600px; background: #2B8EFF; top: -200px; left: -200px; }
+  .orb-2 { width: 400px; height: 400px; background: #9B6DFF; bottom: -100px; right: -100px; }
+
+  /* Layout */
+  .wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Eyebrow */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-dim);
+    border: 0.5px solid var(--blue-border);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--blue);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.35; transform:scale(1.5); } }
+
+  /* Headline */
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--text);
+    text-align: center;
+    max-width: 640px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  h1 em {
+    font-style: italic;
+    background: linear-gradient(135deg, #2B8EFF 0%, #9B6DFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* App name */
+  .app-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+
+  /* Subheading */
+  .sub {
+    font-size: 17px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 380px;
+    line-height: 1.7;
+    font-weight: 400;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+
+  /* Email form */
+  .form-wrap {
+    width: 100%;
+    max-width: 400px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+    margin-bottom: 12px;
+  }
+  .form-row {
+    display: flex;
+    gap: 8px;
+    background: var(--card);
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 6px 6px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .email-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+  }
+  .email-input::placeholder { color: var(--subtle); }
+  .email-btn {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: none;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: -0.2px;
+  }
+  .email-btn:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(43,142,255,0.35); }
+  .email-btn:active { transform: scale(0.97); }
+
+  .privacy-note {
+    font-size: 11px;
+    color: var(--subtle);
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+    margin-bottom: 60px;
+  }
+
+  /* Divider */
+  .div-line {
+    width: 100%;
+    max-width: 400px;
+    height: 0.5px;
+    background: var(--border);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeIn 0.7s ease 0.6s forwards;
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeIn 0.7s ease 0.65s forwards;
+  }
+  .footer-copy { font-size: 12px; color: var(--subtle); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--subtle);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: none;
+  }
+  .footer-links a:hover { color: var(--blue); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Submitted state */
+  .success-msg {
+    display: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--blue);
+    text-align: center;
+    padding: 14px 0;
+  }
+
+  @media (max-width: 480px) {
+    h1 { letter-spacing: -1.5px; }
+    .form-row { flex-direction: column; border-radius: 16px; padding: 12px; gap: 10px; }
+    .email-btn { border-radius: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div class="orb orb-1" id="orb1"></div>
+<div class="orb orb-2" id="orb2"></div>
+
+<div class="wrap">
+  <div class="eyebrow"><div class="pulse"></div>Coming soon to iOS</div>
+
+  <h1>Simple lifting.<br><em>Serious results.</em></h1>
+
+  <p class="app-name">Lift Tracker</p>
+
+  <p class="sub">A workout tracker built around simplicity — so nothing gets between you and your training.</p>
+
+  <div class="form-wrap">
+    <div class="form-row" id="form-row">
+      <input class="email-input" type="email" id="email" placeholder="your@email.com" autocomplete="email">
+      <button class="email-btn" onclick="handleSubmit()">Notify me</button>
+    </div>
+    <p class="success-msg" id="success">You're on the list. We'll be in touch soon. 💪</p>
+  </div>
+
+  <p class="privacy-note">No spam. Just a heads up when we launch.</p>
+
+  <div class="div-line"></div>
+
+  <footer>
+    <p class="footer-copy">© 2026 Lift Tracker · Ontario, Canada 🇨🇦</p>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="mailto:hello@lifttracker.ca">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, input').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  // Parallax orbs
+  document.addEventListener('mousemove', e => {
+    const dx = (e.clientX / window.innerWidth  - 0.5) * 40;
+    const dy = (e.clientY / window.innerHeight - 0.5) * 30;
+    document.getElementById('orb1').style.transform = `translate(${dx}px, ${dy}px)`;
+    document.getElementById('orb2').style.transform = `translate(${-dx * 0.7}px, ${-dy * 0.7}px)`;
+  });
+
+  // Email submit
+  function handleSubmit() {
+    const email = document.getElementById('email').value.trim();
+    if (!email || !email.includes('@')) {
+      document.getElementById('email').style.outline = '2px solid #ff4444';
+      setTimeout(() => document.getElementById('email').style.outline = '', 1500);
+      return;
+    }
+    document.getElementById('form-row').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+  }
+
+  document.getElementById('email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleSubmit();
+  });
+</script>
+</body>
+</html>
