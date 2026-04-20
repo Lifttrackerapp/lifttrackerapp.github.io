@@ -271,10 +271,12 @@
   <p class="sub">A workout tracker built around simplicity — so nothing gets between you and your training.</p>
 
   <div class="form-wrap">
-    <div class="form-row" id="form-row">
-      <input class="email-input" type="email" id="email" placeholder="your@email.com" autocomplete="email">
-      <button class="email-btn" onclick="handleSubmit()">Notify me</button>
-    </div>
+    <form id="fs-form" action="https://formspree.io/f/mqewlnlj" method="POST">
+      <div class="form-row" id="form-row">
+        <input class="email-input" type="email" name="email" id="email" placeholder="your@email.com" autocomplete="email" required>
+        <button class="email-btn" type="submit">Notify me</button>
+      </div>
+    </form>
     <p class="success-msg" id="success">You're on the list. We'll be in touch soon. 💪</p>
   </div>
 
@@ -312,20 +314,35 @@
     document.getElementById('orb2').style.transform = `translate(${-dx * 0.7}px, ${-dy * 0.7}px)`;
   });
 
-  // Email submit
-  function handleSubmit() {
+  // Formspree AJAX submission — shows success inline without page reload
+  document.getElementById('fs-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
     const email = document.getElementById('email').value.trim();
     if (!email || !email.includes('@')) {
       document.getElementById('email').style.outline = '2px solid #ff4444';
       setTimeout(() => document.getElementById('email').style.outline = '', 1500);
       return;
     }
-    document.getElementById('form-row').style.display = 'none';
-    document.getElementById('success').style.display = 'block';
-  }
-
-  document.getElementById('email').addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSubmit();
+    const btn = this.querySelector('.email-btn');
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.7';
+    try {
+      const res = await fetch('https://formspree.io/f/mqewlnlj', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      if (res.ok) {
+        document.getElementById('form-row').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+      } else {
+        btn.textContent = 'Try again';
+        btn.style.opacity = '1';
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.style.opacity = '1';
+    }
   });
 </script>
 </body>
