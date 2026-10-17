@@ -1,92 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-CA">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Service — Lift Tracker</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Serif+Display&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --blue: #2B8EFF; --text: #1a1a2e; --muted: #6b7280; --bg: #f7f7f9; --border: rgba(0,0,0,0.07); }
-  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.75; }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 80px 24px 120px; }
-  .back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--blue); text-decoration: none; margin-bottom: 48px; font-weight: 500; }
-  .back:hover { opacity: 0.7; }
-  .back svg { width: 14px; height: 14px; }
-  h1 { font-family: 'DM Serif Display', serif; font-size: 42px; letter-spacing: -1px; line-height: 1.1; color: var(--text); margin-bottom: 8px; }
-  .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
-  h2 { font-size: 18px; font-weight: 600; color: var(--text); margin: 36px 0 12px; }
-  p { font-size: 15px; color: #374151; margin-bottom: 14px; }
-  ul { font-size: 15px; color: #374151; padding-left: 20px; margin-bottom: 14px; }
-  ul li { margin-bottom: 6px; }
-  .divider { height: 0.5px; background: var(--border); margin: 48px 0; }
-  a { color: var(--blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  footer { text-align: center; font-size: 12px; color: var(--muted); margin-top: 60px; }
-  footer a { color: var(--muted); margin: 0 10px; }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Terms of Use | Lift Tracker</title>
+<meta name="description" content="The terms that govern your use of the Lift Tracker iOS app, including subscriptions, free trials, and the health and fitness disclaimer.">
+<link rel="canonical" href="https://lifttracker.ca/terms.html">
+<meta name="apple-itunes-app" content="app-id=6761788196">
+<meta name="theme-color" content="#0A1218">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icons/icon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lift Tracker">
+<meta property="og:locale" content="en_CA">
+<meta property="og:url" content="https://lifttracker.ca/terms.html">
+<meta property="og:title" content="Terms of Use | Lift Tracker">
+<meta property="og:description" content="The terms that govern your use of the Lift Tracker iOS app.">
+<meta property="og:image" content="https://lifttracker.ca/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@LiftTrackerApp">
+<link rel="preload" href="/assets/fonts/nunito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="/assets/js/site.js" defer></script>
 </head>
 <body>
-<div class="wrap">
-  <a class="back" href="index.html"><svg viewBox="0 0 14 14" fill="none"><path d="M9 1L3 7l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Lift Tracker</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <h1>Terms of Service</h1>
-  <p class="updated">Last updated: April 2026</p>
+<!-- =======================================================================
+     Header (shared: keep in sync with the other pages)
+     ======================================================================= -->
+<header class="nav" data-theme="dark">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="Lift Tracker home">
+      <picture><source type="image/webp" srcset="/assets/img/icon-dark-64.webp"><img src="/assets/img/icon-dark-64.png" width="30" height="30" alt=""></picture>
+      <span>Lift Tracker</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/#gym">Features</a>
+      <a href="/#library">Exercises</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/support.html">Support</a>
+    </nav>
+    <a class="btn btn--sm" href="https://apps.apple.com/ca/app/lift-tracker-gym-workout-log/id6761788196">Download</a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <a class="menu__link" href="/#gym" style="--i:0">Features</a>
+      <a class="menu__link" href="/#library" style="--i:1">Exercises</a>
+      <a class="menu__link" href="/#pricing" style="--i:2">Pricing</a>
+      <a class="menu__link" href="/#faq" style="--i:3">FAQ</a>
+      <a class="menu__link" href="/support.html" style="--i:4">Support</a>
+    </nav>
+    <div class="menu__foot">
+      <a class="badge" href="https://apps.apple.com/ca/app/lift-tracker-gym-workout-log/id6761788196"><img src="/assets/img/app-store-badge-white.svg" width="150" height="50" alt="Download on the App Store"></a>
+      <p>Free for 14 days. iPhone with iOS 26 or later.</p>
+    </div>
+  </div>
+</header>
 
-  <p>These Terms of Service ("Terms") govern your use of the Lift Tracker iOS application ("the App"), operated by Aamer Seth ("we", "us", or "our"), a sole proprietorship registered in Ontario, Canada. By downloading or using the App, you agree to these Terms.</p>
+<main id="main">
+  <section class="page-hero" data-nav="dark" aria-labelledby="page-title">
+    <div class="wrap wrap--narrow">
+      <p class="kicker">Legal</p>
+      <h1 class="h1 h1--page" id="page-title">Terms of Use</h1>
+      <p class="page-hero__meta">Last updated: October 2026</p>
+    </div>
+  </section>
 
-  <h2>Use of the App</h2>
-  <p>Lift Tracker is a personal fitness tracking application. You may use it for your own personal, non-commercial purposes. You agree not to:</p>
-  <ul>
-    <li>Reverse engineer, decompile, or disassemble the App</li>
-    <li>Use the App for any unlawful purpose</li>
-    <li>Attempt to gain unauthorised access to any part of the App or its infrastructure</li>
-    <li>Redistribute or resell the App or any part of it</li>
-  </ul>
+  <section class="page-body day" data-nav="light">
+    <div class="wrap wrap--narrow prose">
+      <p>These Terms of Use ("Terms") govern your use of the Lift Tracker iOS application ("the App"), operated by Aamer Seth, operating as Seth Technologies ("we", "us", or "our"), a sole proprietorship registered in Ontario, Canada. By downloading or using the App, you agree to these Terms.</p>
 
-  <h2>Subscriptions and Billing</h2>
-  <p>Lift Tracker offers an optional premium subscription to unlock all features. Subscriptions are billed through Apple's App Store and are subject to Apple's payment terms. We offer:</p>
-  <ul>
-    <li><strong>Monthly plan</strong> — billed monthly, cancel anytime</li>
-    <li><strong>Annual plan</strong> — billed once per year at a discounted rate</li>
-  </ul>
-  <p>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription at any time through your Apple ID settings. We do not offer refunds for partial subscription periods, except where required by applicable law.</p>
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#use">Use of the App</a></li>
+          <li><a href="#billing">Subscriptions and Billing</a></li>
+          <li><a href="#trial">Free Trial</a></li>
+          <li><a href="#health">Health and Fitness Disclaimer</a></li>
+          <li><a href="#ip">Intellectual Property</a></li>
+          <li><a href="#liability">Limitation of Liability</a></li>
+          <li><a href="#termination">Termination</a></li>
+          <li><a href="#law">Governing Law</a></li>
+          <li><a href="#changes">Changes to These Terms</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ol>
+      </nav>
 
-  <h2>Free Trial</h2>
-  <p>We may offer a free trial period for new subscribers. If you do not cancel before the trial ends, you will be automatically charged for the selected subscription plan. Trial eligibility is determined by Apple and may not be available to users who have previously subscribed.</p>
+      <h2 id="use">Use of the App</h2>
+      <p>Lift Tracker is a personal fitness tracking application. You may use it for your own personal, non commercial purposes. You agree not to:</p>
+      <ul>
+        <li>Reverse engineer, decompile, or disassemble the App</li>
+        <li>Use the App for any unlawful purpose</li>
+        <li>Attempt to gain unauthorised access to any part of the App or its infrastructure</li>
+        <li>Redistribute or resell the App or any part of it</li>
+      </ul>
 
-  <h2>Health and Fitness Disclaimer</h2>
-  <p>Lift Tracker is a tool for logging and tracking your workouts. It is not a substitute for professional medical or fitness advice. Always consult a qualified healthcare professional before beginning any new exercise program, particularly if you have any pre-existing medical conditions.</p>
-  <p>We are not liable for any injury, illness, or health issue arising from use of the App or any workout plan you follow.</p>
+      <h2 id="billing">Subscriptions and Billing</h2>
+      <p>Lift Tracker requires a Lift Tracker Pro subscription. Subscriptions are billed through Apple's App Store and are subject to Apple's payment terms. We offer:</p>
+      <ul>
+        <li><strong>Monthly plan:</strong> billed monthly, cancel anytime</li>
+        <li><strong>Annual plan:</strong> billed once per year at a discounted rate</li>
+      </ul>
+      <p>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription at any time through your Apple Account settings. We do not offer refunds for partial subscription periods, except where required by applicable law.</p>
 
-  <h2>Intellectual Property</h2>
-  <p>All content within the App — including but not limited to the design, code, exercise database, icons, and branding — is the property of Lift Tracker and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
+      <h2 id="trial">Free Trial</h2>
+      <p>We may offer a free trial period for new subscribers. If you do not cancel before the trial ends, you will be automatically charged for the selected subscription plan. Trial eligibility is determined by Apple and may not be available to users who have previously subscribed.</p>
 
-  <h2>Limitation of Liability</h2>
-  <p>To the maximum extent permitted by applicable law, Lift Tracker and its operators shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the App, even if we have been advised of the possibility of such damages.</p>
+      <h2 id="health">Health and Fitness Disclaimer</h2>
+      <p>Lift Tracker is a tool for logging and tracking your workouts. It is not a substitute for professional medical or fitness advice. Suggestions such as warm up sets and deload prompts are generated from the data you log, and workout summaries written by Apple Intelligence are generated automatically. All of them are for information only. Estimated one rep maxes and calorie figures are estimates.</p>
+      <p>Always consult a qualified healthcare professional before beginning any new exercise program, particularly if you have any existing medical conditions, and stop if you feel pain.</p>
+      <p>We are not liable for any injury, illness, or health issue arising from use of the App or any workout plan you follow.</p>
 
-  <h2>Termination</h2>
-  <p>We reserve the right to suspend or terminate your access to the App at our discretion if you violate these Terms. You may stop using the App at any time by deleting it from your device.</p>
+      <h2 id="ip">Intellectual Property</h2>
+      <p>All content within the App, including but not limited to the design, code, exercise database, icons, and branding, is the property of Seth Technologies and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
 
-  <h2>Governing Law</h2>
-  <p>These Terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein. Any disputes shall be resolved in the courts of Ontario, Canada.</p>
+      <h2 id="liability">Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, Seth Technologies shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the App, even if we have been advised of the possibility of such damages.</p>
+      <p>Because your workout data is stored on your device, you are responsible for your own device backups.</p>
 
-  <h2>Changes to These Terms</h2>
-  <p>We may update these Terms from time to time. We will notify you of material changes through the App or by updating the date at the top of this page. Continued use of the App after changes constitutes your acceptance of the updated Terms.</p>
+      <h2 id="termination">Termination</h2>
+      <p>We reserve the right to suspend or terminate your access to the App at our discretion if you violate these Terms. You may stop using the App at any time by deleting it from your device.</p>
 
-  <h2>Contact Us</h2>
-  <p>If you have any questions about these Terms, please contact us at:<br>
-  <a href="mailto:hello@lifttracker.ca">hello@lifttracker.ca</a></p>
+      <h2 id="law">Governing Law</h2>
+      <p>These Terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein. Any disputes shall be resolved in the courts of Ontario, Canada.</p>
 
-  <div class="divider"></div>
-  <footer>
-    © 2026 Lift Tracker · Ontario, Canada
-    <br>
-    <a href="index.html">Home</a>
-    <a href="/privacy.html">Privacy Policy</a>
-    <a href="mailto:hello@lifttracker.ca">Contact</a>
-  </footer>
-</div>
+      <h2 id="changes">Changes to These Terms</h2>
+      <p>We may update these Terms from time to time. We will notify you of material changes through the App or by updating the date at the top of this page. Continued use of the App after changes constitutes your acceptance of the updated Terms.</p>
+
+      <h2 id="contact">Contact Us</h2>
+      <p>If you have any questions about these Terms, please contact us at <a href="mailto:hello@lifttracker.ca">hello@lifttracker.ca</a>.</p>
+    </div>
+  </section>
+</main>
+
+<!-- =======================================================================
+     Footer (shared: keep in sync with the other pages)
+     ======================================================================= -->
+<footer class="footer" data-nav="dark">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="/"><picture><source type="image/webp" srcset="/assets/img/icon-dark-64.webp"><img src="/assets/img/icon-dark-64.png" width="30" height="30" alt=""></picture><span>Lift Tracker</span></a>
+        <p>Simple lifting. Serious results.</p>
+        <a class="badge" href="https://apps.apple.com/ca/app/lift-tracker-gym-workout-log/id6761788196"><img src="/assets/img/app-store-badge-white.svg" width="132" height="44" alt="Download on the App Store"></a>
+      </div>
+      <nav aria-labelledby="f-product"><h2 id="f-product">Product</h2><ul><li><a href="/#gym">Features</a></li><li><a href="/#library">Exercise library</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/#faq">FAQ</a></li></ul></nav>
+      <nav aria-labelledby="f-help"><h2 id="f-help">Help</h2><ul><li><a href="/support.html">Support</a></li><li><a href="mailto:hello@lifttracker.ca">hello@lifttracker.ca</a></li></ul></nav>
+      <nav aria-labelledby="f-legal"><h2 id="f-legal">Legal</h2><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html" aria-current="page">Terms of Use</a></li></ul></nav>
+      <nav aria-labelledby="f-follow" class="footer__social"><h2 id="f-follow">Follow</h2><ul>
+        <li><a href="https://instagram.com/LiftTrackerApp" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></li>
+        <li><a href="https://x.com/LiftTrackerApp" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>X</a></li>
+      </ul></nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Seth Technologies</p>
+      <p>Made in Ontario, Canada</p>
+      <p class="footer__legal">Apple, the Apple logo and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
